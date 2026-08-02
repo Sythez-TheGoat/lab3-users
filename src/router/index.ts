@@ -4,6 +4,7 @@ import AboutView from '@/views/AboutView.vue'
 import UserLayoutView from '@/views/user/LayoutView.vue'
 import UserProfileView from '@/views/user/ProfileView.vue'
 import UserPostsView from '@/views/user/PostsView.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +36,11 @@ const router = createRouter({
           component: UserPostsView,
         },
       ],
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'not-found',
+      component: NotFoundView,
     },
   ],
 })
