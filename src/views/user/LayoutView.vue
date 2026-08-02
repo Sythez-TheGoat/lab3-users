@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import type { User } from '@/types'
 import UserService from '@/services/UserService'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   id: {
@@ -11,14 +12,25 @@ const props = defineProps({
 })
 
 const user = ref<User | null>(null)
+const router = useRouter()
 
 onMounted(() => {
   UserService.getUser(Number(props.id))
     .then((response) => {
-      user.value = response.data
+      if (!response.data || Object.keys(response.data).length === 0) {
+        router.push({
+          name: '404-resource-view',
+          params: { resource: 'user' },
+        })
+      } else {
+        user.value = response.data
+      }
     })
-    .catch((error) => {
-      console.error('There was an error!', error)
+    .catch(() => {
+      router.push({
+        name: '404-resource-view',
+        params: { resource: 'user' },
+      })
     })
 })
 </script>
