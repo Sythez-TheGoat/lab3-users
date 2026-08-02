@@ -26,7 +26,11 @@ onMounted(() => {
 <template>
   <div v-if="user">
     <h1>{{ user.name }}</h1>
-    <p>{{ user.email }}</p>
-    <p>{{ user.company.name }}</p>
+    <nav>
+      <RouterLink :to="{ name: 'user-profile-view' }">Profile</RouterLink>
+      |
+      <RouterLink :to="{ name: 'user-posts-view' }">Posts</RouterLink>
+    </nav>
+    <RouterView :user="user" />
   </div>
 </template>

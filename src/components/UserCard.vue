@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <RouterLink class="user-link" :to="{ name: 'user-detail-view', params: { id: user.id } }">
+  <RouterLink class="user-link" :to="{ name: 'user-layout-view', params: { id: user.id } }">
     <div class="user-card">
       <h2>{{ user.name }}</h2>
       <span>{{ user.email }}</span>
