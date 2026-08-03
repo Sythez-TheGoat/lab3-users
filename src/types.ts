@@ -21,3 +21,11 @@ export interface User {
     bs: string
   }
 }
+
+export interface MessageState {
+  message: string
+}
+
+export interface UserState {
+  user: User | null
+}
